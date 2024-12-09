@@ -4,31 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [itemName, setItemName] = useState('')
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+<section className='products-page'>
+  <h1>Sportix</h1>
+  <h2>Add a product</h2>
+  <form>
+    <label htmlFor='product-name'>
+      Product Name
+    </label>
+    <input id="product-name" name="product-name" placeholder='Product Name' value={itemName} onChange={(e) => setItemName(e.target.value)} />
+    <button type="button">Create</button>
+  </form>
+</section>
   )
 }
 
