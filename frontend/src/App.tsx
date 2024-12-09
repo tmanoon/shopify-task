@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
 import React from 'react'
-import './App.css'
+import './style/app.css'
 
 function App() {
 
@@ -18,8 +18,8 @@ function App() {
     { type: 'number', fieldName: 'price' }
   ]
 
-  const onSetItem = (val: string, fieldName:string) => {
-    setItem(item => ({ ...item, [fieldName]: val}))
+  const onSetItem = (val: string, fieldName: string) => {
+    setItem(item => ({ ...item, [fieldName]: val }))
   }
 
   async function onCreateProduct(e: FormEvent) {
@@ -38,7 +38,9 @@ function App() {
 
   return (
     <section className='products-page'>
-      <h1>Sportix</h1>
+      <header>
+        <h1>Sportix</h1>
+      </header>
       <h2>Add a product</h2>
       <form onSubmit={onCreateProduct}>
         {
