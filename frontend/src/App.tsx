@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
+import React from 'react'
 import './App.css'
 
 function App() {
@@ -24,12 +25,12 @@ function App() {
   async function onCreateProduct(e: FormEvent) {
     e.preventDefault()
     try {
-      const res = await axios({
+      await axios({
         url: '//localhost:3030/api/product',
         method: 'POST',
         data: item
       })
-      alert(res)
+        .then(response => console.log('res', response.data))
     } catch (error) {
       console.log('err:', error)
     }
@@ -43,7 +44,7 @@ function App() {
         {
           fields.map(field => {
             return (
-              <>
+              <React.Fragment key={field.fieldName}>
                 <label htmlFor={field.fieldName}>{field.fieldName}</label>
                 <input
                   type={field.type}
@@ -51,11 +52,11 @@ function App() {
                   name={field.fieldName}
                   placeholder={field.placeholder || ''}
                   onChange={(e) => onSetItem(e.target.value, field.fieldName)} />
-              </>
+              </React.Fragment >
             )
           })
         }
-        <button type="button">Create</button>
+        <button>Create</button>
       </form>
     </section>
   )
